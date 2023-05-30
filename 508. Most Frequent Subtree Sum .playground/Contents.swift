@@ -27,7 +27,7 @@ public class TreeNode {
  O(n) where `n` is `root.nodes.size`
 
  - Space complexity:
- O(1) or O(n) where `n` is the depth of the tree.
+ O(n) where `n` is the depth of the tree AND/OR `n` is the number of unique sums.
  */
 
 class Solution {
