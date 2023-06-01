@@ -15,11 +15,11 @@ public class TreeNode {
 
 /**
  # Intuition
- Return the right most node from each level of the tree.
+ Perform max node logic at the start of each row using BFS
 
  # Approach
- Use BFS to store an array of integers.
- Append the last node in each row to the result.
+ Use BFS traversal to visit each node.
+ Store a value to `Int.min` at the beginning of each row so each visited value will at least update row max value.
 
  # Complexity
  - Time complexity:
@@ -30,19 +30,17 @@ public class TreeNode {
  */
 
 class Solution {
-    func rightSideView(_ root: TreeNode?) -> [Int] {
+    func largestValues(_ root: TreeNode?) -> [Int] {
         guard let root = root else {
             return []
         }
         
         var queue = [root], res = [Int]()
         while !queue.isEmpty {
-            if let last = queue.last {
-                res.append(last.val)
-            }
-            
+            var maxVal = Int.min
             for _ in 0..<queue.count {
                 let node = queue.removeFirst()
+                maxVal = max(node.val, maxVal)
                 
                 if let left = node.left {
                     queue.append(left)
@@ -52,6 +50,8 @@ class Solution {
                     queue.append(right)
                 }
             }
+            
+            res.append(maxVal)
         }
         
         return res
