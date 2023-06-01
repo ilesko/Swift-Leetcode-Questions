@@ -37,13 +37,12 @@ class Solution {
         
         var queue = [root], res = [Int]()
         while !queue.isEmpty {
-            let levelSize = queue.count
-            for i in 0..<levelSize {
+            if let last = queue.last {
+                res.append(last.val)
+            }
+            
+            for _ in 0..<queue.count {
                 let node = queue.removeFirst()
-                
-                if i == levelSize - 1 {
-                    res.append(node.val)
-                }
                 
                 if let left = node.left {
                     queue.append(left)
