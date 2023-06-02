@@ -13,47 +13,28 @@ public class TreeNode {
     }
 }
 
-/**
- # Intuition
- Use the normal BFS traversal and reverse each odd row
-
- # Approach
- Iterate using standard BFS traversal.
- Create an array of values for each row.
- Reverse the row if it is an odd row.
-
- # Complexity
- - Time complexity:
- O(n) where `n` is `root.nodes.size`
-
- - Space complexity:
- O(n/2 + 1) or O(n)
- */
-
 class Solution {
     func zigzagLevelOrder(_ root: TreeNode?) -> [[Int]] {
         guard let root = root else {
             return []
         }
         
-        var queue = [root], res = [[Int]]()
-        var isEven = true
+        var res = [[Int]](), queue = [root], isEven = true, acc = [root.val]
         while !queue.isEmpty {
-            var acc = [Int]()
+            acc = []
             for _ in 0..<queue.count {
                 let node = queue.removeFirst()
                 acc.append(node.val)
                 
                 if let left = node.left {
-                    queue.append(left)
+                    queue.insert(left, at: isEven ? 0 : queue.count)
                 }
                 
                 if let right = node.right {
-                    queue.append(right)
+                    queue.insert(right, at: isEven ? 0 : queue.count)
                 }
             }
-            
-            res.append(isEven ? acc : acc.reversed())
+            res.append(acc)
             isEven = !isEven
         }
         
