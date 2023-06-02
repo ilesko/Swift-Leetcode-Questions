@@ -19,7 +19,7 @@ public class TreeNode {
 
  # Approach
  Use BFS to iterate over each row in the tree.
- Append each row array to the end of result.
+ Append each row array to the front of result.
 
  # Complexity
  - Time complexity:
