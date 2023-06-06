@@ -41,6 +41,7 @@ class Solution {
             return false
         }
         
+        
         return validate(root.left, left, root.val) && validate(root.right, root.val, right)
     }
     
