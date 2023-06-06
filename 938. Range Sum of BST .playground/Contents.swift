@@ -26,6 +26,7 @@ public class TreeNode {
  # Complexity
  - Time complexity:
  O(log n) where `n` is `root.nodes.size`
+ O(n) where all nodes values are in the range `low...high`
 
  - Space complexity:
  O(1) or O(n) where `n` is the depth of the call stack
