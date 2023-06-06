@@ -31,6 +31,8 @@ public class TreeNode {
  O(n/2 + 1) or O(n)
  
  # Note
+ This solution aims to avoid calling .reversed() on the values of even rows to increase performance.
+ 
  The verbose solution is faster (5ms) and is easier to read IMO.
  The concise solution is slower (11ms) and is harder to read.  The performance hit may come from the ternary operator?
  */
