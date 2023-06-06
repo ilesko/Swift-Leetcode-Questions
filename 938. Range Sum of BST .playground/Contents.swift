@@ -44,11 +44,11 @@ class Solution {
         }
         
         if low < root.val {
-            ans += rangeSumBST(root.left)
+            ans += rangeSumBST(root.left, low, high)
         }
         
         if root.val < high {
-            ans += rangeSumBST(root.right)
+            ans += rangeSumBST(root.right, low, high)
         }
         
         return ans
