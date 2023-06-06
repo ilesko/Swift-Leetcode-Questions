@@ -14,22 +14,21 @@ public class TreeNode {
 }
 
 /**
- # Intuition
- Use preorder traversal until `val` is found.
-
- # Approach
- Create a helper function that uses preorder DFS traversal.
- Store the result in an optional `TreeNode` property.
- Exit the helper function when `root.val == val`
-
+ # Intuition/Approach
+ Traverse a node's right subtree when `val > root.val`.
+ Traverse a node's left subtree when `val < root.val`.
+ Return root when `root.val == val`.
+ Return `nil` if `val` is not found.
+ 
  # Complexity
  - Time complexity:
- O(n) where `n` is `root.nodes.size`
+ O(log n) where `n` is `root.nodes.size`
 
  - Space complexity:
  O(1) or O(n) where `n` is the depth of the tree.
  */
 
+// Verbose
 class Solution {
     func searchBST(_ root: TreeNode?, _ val: Int) -> TreeNode? {
         guard let root = root else {
@@ -38,10 +37,18 @@ class Solution {
         
         if root.val == val {
             return root
+        } else if val > root.val {
+            return searchBST(root.right, val)
         }
         
-        let _ = searchBST(root.left, val)
-        let _ = searchBST(root.right, val)
-        return nil
+        return searchBST(root.left, val)
+    }
+    
+    func sBST(_ root: TreeNode?, _ val: Int) -> TreeNode? {
+        guard let root = root else {
+            return nil
+        }
+        
+        return root.val == val ? root : sBST(val > root.val ? root.right : root.left, val)
     }
 }
