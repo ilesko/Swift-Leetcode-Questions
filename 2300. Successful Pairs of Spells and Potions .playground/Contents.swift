@@ -2,11 +2,11 @@ import UIKit
 
 /**
  # Intuition
- Find the first index of `potions.sorted()[i] * spells[i]` is greater than or equal to `success`
+ Find the first index of `potions.sorted()[i] * spells[j]` is greater than or equal to `success`
  
  # Approach
  Sort the potions array.  This is important to perform the binary search.
- Create a helper binary search function that return the index (`i`) that meets the valid condition `potions.sorted()[i] * spells[i] >= success` for each spell.
+ Create a helper binary search function that return the index (`i`) that meets the valid condition `potions.sorted()[i] * spells[j] >= success` for each spell.
  Append `potions.count - i` to result.
  (ex: if `potions.count = 5`, `i = 1`, there are four valid value since every value between `potions[i]` and `potions[potions.count - 1]` will satisfy the condition)
 
